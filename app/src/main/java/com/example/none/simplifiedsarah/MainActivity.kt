@@ -1,9 +1,13 @@
 package com.example.none.simplifiedsarah
 
+import android.app.Application
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
+import android.content.Intent
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -66,6 +70,9 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+        if(ET_1.text.toString().toLowerCase().trim() == "0x" || ET_2.text.toString().toLowerCase().trim() == "0x") warning += "0x + ... nie jest wielomianem 1-go stopnia"
+
         if (x != 1) warning += "Podałeś za dużo lub za mało x \n"
 
         if (warning == "")
@@ -83,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                 {
 
                     '-' -> { b = b.drop(1)}
+                    else -> {b = (b.toInt() * -1).toString()}
 
                 }
 
@@ -90,10 +98,15 @@ class MainActivity : AppCompatActivity() {
 
             }
 
+            val intent = Intent(this, RageKage::class.java)
+
+            intent.putExtra("a", a)
+            intent.putExtra("b", b)
+            intent.putExtra("sbs", Switch_SBS.isChecked)
+
+            startActivity(intent) //start RageKage
+
             if (Switch_SBS.isChecked) gimme_div.text = "CHECKED" else gimme_div.text = "Wszyqweqewqeqwewqe"
-
-            RageKage()
-
 
         }
         else
@@ -101,6 +114,15 @@ class MainActivity : AppCompatActivity() {
 
             gimme_div.text = warning
             warning = ""
+
+//            val intent = Intent(this, RageKage::class.java)
+//
+//            intent.putExtra("a", "23")
+//            intent.putExtra("b", "123x")
+//            intent.putExtra("sbs", Switch_SBS.isChecked)
+//
+//
+//            startActivity(intent)
 
         }
 
