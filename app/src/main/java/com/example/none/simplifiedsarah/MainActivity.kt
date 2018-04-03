@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
-
+import java.lang.Math.sqrt
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +21,106 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun calc(num :String) :String
+    {
+
+
+        var i :Int = 0
+        var x :Boolean = true
+        var z :Int = 0
+
+        var tempstr :String = ""
+
+        for (c in num)
+        {
+
+            if(c != 'x') {tempstr += c; x = false}
+
+        }
+
+        while(i < tempstr.length)
+        {
+
+
+            if(tempstr[i] == '/')
+            {
+
+                var a :String = ""
+                var b :String = ""
+
+                while (z < i)
+                {
+
+
+                    a += tempstr[z]
+
+                    z++
+
+
+                }
+
+                z = i+1
+
+                while (z < tempstr.length)
+                {
+
+
+                    b += tempstr[z]
+
+                    z++
+
+
+                }
+
+                if (a.contains('s') || a.contains('/')) a = calc(a)
+                if (b.contains('s') || b.contains('/')) b = calc(b)
+
+                tempstr = (a.toFloat() / b.toFloat()).toString()
+
+                if (x == true) return( tempstr + 'x')
+                else return(tempstr)
+
+            }
+
+            z = 0
+
+            if(tempstr[i] == 's')
+            {
+
+                var a :String = ""
+
+                z = i + 1
+
+                while (z < tempstr.length)
+                {
+
+
+                    a += tempstr[z]
+
+                    z++
+
+
+                }
+
+                if (a.contains('s') || a.contains('/')) a = calc(a)
+
+                tempstr = Math.sqrt(a.toDouble()).toString()
+
+                if (x == true) return(tempstr + 'x')
+                else return(tempstr)
+
+
+            }
+
+            i++
+
+        }
+
+        return(tempstr)
+
+    }
+
+
     fun Butt_Next(v : View)
     {
 
@@ -31,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         for(i in ET_1.text.toString().toLowerCase().trim())
         {
 
-            if ((i == 'x') || (i in '0'..'9') || (i == '/') || (i == '-') || (i == '+') || (i == '.'))
+            if ((i == 'x') || (i in '0'..'9') || (i == '/') || (i == '-') || (i == '+') || (i == '.') || (i == 's'))
             {
 
                 gimme_div.text = "Dobrze"
@@ -52,7 +152,7 @@ class MainActivity : AppCompatActivity() {
         for(i in ET_2.text.toString().toLowerCase().trim())
         {
 
-            if ((i == 'x') || (i in '0'..'9') || (i == '/') || (i == '-') || (i == '+') || (i == '.'))
+            if ((i == 'x') || (i in '0'..'9') || (i == '/') || (i == '-') || (i == '+') || (i == '.')  || (i == 's'))
             {
 
                 gimme_div.text = "Dobrze"
@@ -83,6 +183,9 @@ class MainActivity : AppCompatActivity() {
             var a :String = ET_1.text.toString().trim()
             var b :String = ET_2.text.toString().trim()
 
+            a = calc(a)
+            b = calc(b)
+
             if (Butt_PM.text == "-")
             {
 
@@ -90,7 +193,7 @@ class MainActivity : AppCompatActivity() {
                 {
 
                     '-' -> { b = b.drop(1)}
-                    else -> {b = (b.toInt() * -1).toString()}
+                    else -> {b = (b.toFloat() * -1).toString()}
 
                 }
 

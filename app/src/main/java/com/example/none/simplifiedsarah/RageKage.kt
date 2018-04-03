@@ -15,29 +15,13 @@ import kotlinx.android.synthetic.main.sbs_rk_activity.*
 /**
  * Created by none on 02.04.18.
  */
-class RageKage :AppCompatActivity(), CompoundButton.OnCheckedChangeListener
+class RageKage :AppCompatActivity()
 {
 
-    override fun onCheckedChanged(p0: CompoundButton?, p1: Boolean) {
-
-
-        if(p1 == false)
-        {
-
-            gimme_SBS1.visibility = View.VISIBLE
-
-        }
-        else
-        {
-
-            gimme_SBS1.visibility = View.INVISIBLE
-
-        }
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sbs_rk_activity)
@@ -56,14 +40,14 @@ class RageKage :AppCompatActivity(), CompoundButton.OnCheckedChangeListener
             var equa = ""
             var x = 0
 
-            if (sbs == "false") {visi = View.INVISIBLE} else {visi = View.VISIBLE; gimme_result.visibility = View.INVISIBLE}
+            if (sbs == "false") {visi = View.INVISIBLE} else {visi = View.VISIBLE; } //gimme_result.visibility = View.INVISIBLE
 
             if(a.contains('x')){equa = "W(x) = $a + $b"}
             else {b = extras["a"].toString(); a = extras["b"].toString(); equa = "W(x) = $b + $a"}
 
             gimme_equa.text = equa
 
-            a = a.substring(0, a.length-1).reversed()
+            a = a.substring(0, a.length).reversed()
 
             var tempstr :String = "" //anoth mirclnth e scree
 
@@ -115,9 +99,9 @@ class RageKage :AppCompatActivity(), CompoundButton.OnCheckedChangeListener
                 else ->
                 {
 
-                    gimme_SBS1.text = "0 = ${a}x + $b / + (${a.substring(0, a.length).toInt() * -1}x)"
-                    gimme_SBS2.text = "${a.substring(0, a.length).toInt() * -1}x = $b / : (${a.substring(0, a.length).toInt() * -1})"
-                    gimme_SBS3.text = "x = ${b.toInt() / (a.substring(0, a.length).toInt() * -1)}"
+                    gimme_SBS1.text = "0 = ${a}x + $b / + (${a.substring(0, a.length).toFloat() * -1}x)"
+                    gimme_SBS2.text = "${a.substring(0, a.length).toFloat() * -1}x = $b / : (${a.substring(0, a.length).toFloat() * -1})"
+                    gimme_SBS3.text = "x = ${b.toFloat() / a.substring(0, a.length).toFloat() * - 1}"
                     gimme_result.text = "x = ${b.toFloat() / a.substring(0, a.length).toFloat() * - 1}"
 
                 }
