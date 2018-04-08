@@ -224,7 +224,6 @@ fun main(args :Array<String>)
                     parc = i
                     var z :Int = 0
                     println("Sending to Larry: paro: $paro   parc: $parc")
-                    //larry(eq, paro, parc)
                     for(c in eq)
                     {
 

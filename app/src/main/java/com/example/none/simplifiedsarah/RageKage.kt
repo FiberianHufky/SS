@@ -1,5 +1,6 @@
 package com.example.none.simplifiedsarah
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -18,6 +19,11 @@ import kotlinx.android.synthetic.main.sbs_rk_activity.*
 class RageKage :AppCompatActivity()
 {
 
+    var x :Float = 0f
+
+    var eq :String = ""
+
+    var sbs :String = ""
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -35,17 +41,19 @@ class RageKage :AppCompatActivity()
 
             var a :String = extras["a"].toString()
             var b :String = extras["b"].toString()
-            var sbs :String = extras["sbs"].toString()
+            sbs = extras["sbs"].toString()
             var visi :Int
             var equa = ""
-            var x = 0
 
-            if (sbs == "false") {visi = View.INVISIBLE} else {visi = View.VISIBLE; } //gimme_result.visibility = View.INVISIBLE
 
-            if(a.contains('x')){equa = "W(x) = $a + $b"}
-            else {b = extras["a"].toString(); a = extras["b"].toString(); equa = "W(x) = $b + $a"}
+            if (sbs == "false") {visi = View.INVISIBLE} else {visi = View.VISIBLE; sbs = "check"}
+
+            if(a.contains('x')){equa = "W(x) = ($a) + ($b)"; eq = "($a) + ($b)"}
+            else {b = extras["a"].toString(); a = extras["b"].toString(); equa = "W(x) = ($b) + ($a)"; eq = "($b) + ($a)"}
 
             gimme_equa.text = equa
+
+
 
             a = a.substring(0, a.length).reversed()
 
@@ -73,10 +81,11 @@ class RageKage :AppCompatActivity()
             when(a)
             {
 
-                "" -> //sun no lng setss fr
+                "" -> //sun no lng sets mfr
                 {
 
                     gimme_result.text = "x = " + (b.toInt() * -1).toString()
+                    x = (b.toFloat() * -1)
 
                     gimme_SBS1.text = "0 = x + $b / - (x)"
                     gimme_SBS2.text = "-x = $b / *(-1)"
@@ -88,6 +97,7 @@ class RageKage :AppCompatActivity()
                 {
 
                     gimme_result.text = "x = " + b
+                    x = b.toFloat()
 
                     gimme_SBS1.text = "0 = -x + $b / + (x)"
                     gimme_SBS2.text = "x = $b"
@@ -103,6 +113,7 @@ class RageKage :AppCompatActivity()
                     gimme_SBS2.text = "${a.substring(0, a.length).toFloat() * -1}x = $b / : (${a.substring(0, a.length).toFloat() * -1})"
                     gimme_SBS3.text = "x = ${b.toFloat() / a.substring(0, a.length).toFloat() * - 1}"
                     gimme_result.text = "x = ${b.toFloat() / a.substring(0, a.length).toFloat() * - 1}"
+                    x = b.toFloat() / a.substring(0, a.length).toFloat() * - 1
 
                 }
 
@@ -130,6 +141,19 @@ class RageKage :AppCompatActivity()
     {
 
         gimme_SBS3.visibility = View.VISIBLE
+
+    }
+
+    fun Butt_RK(v :View)
+    {
+
+        val RK_intent = Intent(this, Jab::class.java)
+
+        RK_intent.putExtra("x", x)
+        RK_intent.putExtra("sbs", sbs)
+        RK_intent.putExtra("eq", eq)
+
+        startActivity(RK_intent)
 
     }
 

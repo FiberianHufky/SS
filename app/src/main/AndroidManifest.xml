@@ -21,6 +21,14 @@
 
         </activity>
 
+        <activity android:name=".Jab">
+
+        </activity>
+
+        <activity android:name=".final">
+
+        </activity>
+
     </application>
 
 </manifest>
