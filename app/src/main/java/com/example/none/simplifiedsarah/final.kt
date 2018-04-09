@@ -1,8 +1,10 @@
 package com.example.none.simplifiedsarah
 
+import android.graphics.Color
 import com.example.none.simplifiedsarah.FSA
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.TextView
 import kotlinx.android.synthetic.main.final_activity.*
 import org.w3c.dom.Text
@@ -15,6 +17,8 @@ class final : AppCompatActivity()
     var sbs :String = ""
 
     var eq :String = ""
+
+    var warning :String = ""
 
     var ls :String = ""
 
@@ -64,14 +68,27 @@ class final : AppCompatActivity()
 
             var ft :MutableList<String> = mutableListOf<String>()
 
-            if(sbs == "check")
+
+            if(ls.toInt() == 9999)
             {
+
+                var tv :TextView = TextView(this)
+                tv.textSize = 16f
+                tv.setTextColor(Color.BLACK)
+
+            }
+            else
+            {
+
 
                 while(i >= 0)
                 {
 
                     var tv :TextView = TextView(this)
                     tv.textSize = 16f
+                    tv.setTextColor(Color.BLACK)
+                    if(sbs == "check") tv.visibility = View.VISIBLE
+                    else tv.visibility = View.INVISIBLE
 
                     if(i == 1)
                     {
@@ -89,6 +106,7 @@ class final : AppCompatActivity()
 
                         tv.text = "reszta = ${x.toDouble() * ft[z-1].toDouble() + poly[i].toDouble()}"
                         Ll_final.addView(tv)
+                        if(x.toDouble() * ft[z-1].toDouble() + poly[i].toDouble() != 0.0) warning = "reszta jest != 0 (${x.toDouble() * ft[z-1].toDouble() + poly[i].toDouble()}). Podany wielomian nie jest podzielny przez $eq"
                         i--
                         continue
 
@@ -113,11 +131,49 @@ class final : AppCompatActivity()
 
                     }
 
-
-
                     i--
 
                 }
+
+            }
+
+            if(warning == "")
+            {
+
+                var tempstr :String = ""
+
+                for(x in ft) //Zdran
+                {
+
+                    if(z > 1)
+                    {
+
+                        if(x.toDouble() != 0.0)
+                        {
+
+                            if(x.toDouble() == 1.0) tempstr += "x^${z-1} + "
+                            else tempstr += "${x}x^${z-1}"//csoema
+                        }
+                        z--
+
+                    }
+                    else
+                    {
+
+                        tempstr += "$x"
+                        z--
+
+                    }
+
+                }
+
+                gimme_eqfin.text = " WYNIK: " + tempstr
+
+            }
+            else
+            {
+
+                gimme_eqfin.text = warning
 
             }
 
@@ -126,3 +182,4 @@ class final : AppCompatActivity()
     }
 
 }
+

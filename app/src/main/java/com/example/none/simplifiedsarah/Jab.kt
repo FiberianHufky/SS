@@ -158,11 +158,6 @@ class Jab : AppCompatActivity()
 
         }
 
-        tstr = ""
-
-        for(i in tab) tstr += i + "  "
-        gimme_poly.text = tstr
-
     }
 
  }
