@@ -105,8 +105,6 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
 
-            if (Switch_SBS.isChecked) gimme_div.text = "CHECKED" else gimme_div.text = "Wszyqweqewqeqwewqe"
-
         } else {
 
             gimme_div.text = warning
