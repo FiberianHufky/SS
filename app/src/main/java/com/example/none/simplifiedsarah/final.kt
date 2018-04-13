@@ -1,5 +1,6 @@
 package com.example.none.simplifiedsarah
 
+import android.content.Intent
 import android.graphics.Color
 import com.example.none.simplifiedsarah.FSA
 import android.os.Bundle
@@ -15,6 +16,8 @@ class final : AppCompatActivity()
     var x :String = ""
 
     var sbs :String = ""
+
+    var ft :MutableList<String> = mutableListOf<String>()
 
     var eq :String = ""
 
@@ -65,8 +68,6 @@ class final : AppCompatActivity()
 
             i = ls.toInt()
             var z :Int = 0
-
-            var ft :MutableList<String> = mutableListOf<String>()
 
 
             if(ls.toInt() == 9999)
@@ -178,6 +179,20 @@ class final : AppCompatActivity()
             }
 
         }
+
+    }
+
+    fun Butt_chart(v :View)
+    {
+
+        val final_intent = Intent(this, chart::class.java)
+
+        var arr :Array<String> = ft.toTypedArray()
+
+        final_intent.putExtra("ft", arr)
+        final_intent.putExtra("ls", ls)
+
+        startActivity(final_intent)
 
     }
 

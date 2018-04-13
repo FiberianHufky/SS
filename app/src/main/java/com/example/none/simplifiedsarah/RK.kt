@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.sbs_rk_activity.*
 /**
  * Created by none on 02.04.18.
  */
-class RageKage :AppCompatActivity()
+class RK :AppCompatActivity()
 {
 
     var x :Float = 0f

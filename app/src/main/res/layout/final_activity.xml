@@ -43,8 +43,9 @@
     </HorizontalScrollView>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="350dp"
-        android:layout_height="362dp"
+        android:layout_height="304dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -52,7 +53,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.324">
 
         <LinearLayout
             android:id="@+id/Ll_final"
@@ -62,6 +64,7 @@
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="350dp"
         android:layout_height="45dp"
         android:layout_marginBottom="8dp"
@@ -73,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.835">
 
         <HorizontalScrollView
             android:layout_width="wrap_content"
@@ -104,4 +107,20 @@
         </HorizontalScrollView>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/Butt_chart"
+        android:layout_width="345dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Chart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.981"
+        android:onClick="Butt_chart"/>
 </android.support.constraint.ConstraintLayout>

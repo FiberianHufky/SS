@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
             } else walters = FSA.FTF(walters)
 
-            val intent = Intent(this, RageKage::class.java)
+            val intent = Intent(this, RK::class.java)
 
             intent.putExtra("a", dunbar)
             intent.putExtra("b", walters)
