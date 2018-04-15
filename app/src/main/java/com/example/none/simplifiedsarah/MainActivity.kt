@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         for (i in dunbar) {
 
-            if ((i == 'x') || (i in '0'..'9') || (i == '/') || (i == '-') || (i == '*') || (i == '+') || (i == '.') || (i == 's') || (i == ')') || (i == '(')) {
+            if ((i == 'x') || (i in '0'..'9') || (i == '/') || (i == '-') || (i == '*') || (i == '+') || (i == '.') || (i == 's') || (i == ')') || (i == '(') || (i == '^')) {
 
                 gimme_div.text = "Dobrze"
 
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         for (i in walters) {
 
-            if ((i == 'x') || (i in '0'..'9') || (i == '/') || (i == '-') || (i == '*') || (i == '+') || (i == '.') || (i == 's') || (i == ')') || (i == '(')) {
+            if ((i == 'x') || (i in '0'..'9') || (i == '/') || (i == '-') || (i == '*') || (i == '+') || (i == '.') || (i == 's') || (i == ')') || (i == '(') || (i == '^')) {
 
                 gimme_div.text = "Dobrze"
 
